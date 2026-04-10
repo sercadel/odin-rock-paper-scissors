@@ -4,6 +4,6 @@ function getComputerChoice() {
     return choices[randomIndex];
 }
 
-// resultado en consola
-console.log(getComputerChoice())
 
+// Pruebas
+console.log("Computadora elige:", getComputerChoice());
