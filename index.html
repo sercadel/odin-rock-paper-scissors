@@ -2,11 +2,25 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors | The Odin Project</title>
     <script src="script.js" defer></script>
 </head>
 <body>
     <h1>Rock Paper Scissors</h1>
-    <p>Abre la consola (F12 → Console) para jugar</p>
+    
+    <!-- Botones de elección -->
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    
+    <!-- Resultados -->
+    <div id="results">
+        <p>Last round: <span id="round-result"></span></p>
+        <p>Score: <span id="score">0 - 0</span></p>
+        <p id="winner"></p>
+    </div>
+    
+    <button id="reset">Reset Game</button>
 </body>
 </html>
