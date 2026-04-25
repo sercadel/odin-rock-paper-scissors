@@ -17,8 +17,11 @@ function playRound(humanChoice) {
     
     // Determinar ganador
     let result;
+    let roundMessage;
+
     if (humanChoice === computerChoice) {
         result = "tie";
+        roundMessage = `🤝 Tie! Both chose ${humanChoice}`;
         console.log(`It's a tie! Both chose ${humanChoice}`);
     } else if (
         (humanChoice === "rock" && computerChoice === "scissors") ||
@@ -27,24 +30,36 @@ function playRound(humanChoice) {
     ) {
         result = "human";
         humanScore++;
+        roundMessage = `✅ You win! ${humanChoice} beats ${computerChoice}`;
         console.log(`You win! ${humanChoice} beats ${computerChoice}`);
     } else {
         result = "computer";
         computerScore++;
+        roundMessage = `❌ You lose! ${computerChoice} beats ${humanChoice}`;
         console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
     }
+
+    // === ACTUALIZAR DOM PARA CADA RONDA ===
+    // Mostrar resultado de la ronda actual
+    document.getElementById('round-result').textContent = roundMessage;
     
-    // Mostrar resultados en DOM (Por hacer)
-    // Por ahora solo console.logs, luego añadir DOM
+    // Actualizar puntuación en el DOM
+    document.getElementById('score').textContent = `${humanScore} - ${computerScore}`;
+    
+
     console.log("You: " + humanScore);
     console.log("PC: " + computerScore);
+
     // Verificar si alguien llegó a 5 puntos
     if (humanScore >= 5) {
-        console.log("🎉 You win the game! 🎉");
+        document.getElementById('winner').textContent = "🎉 You win the game! 🎉";
         gameActive = false;
     } else if (computerScore >= 5) {
-        console.log("💻 Computer wins the game! 💻");
+        document.getElementById('winner').textContent = "💻 Computer wins the game! 💻";
         gameActive = false;
+    } else {
+    // Limpiar mensaje de winner si el juego sigue activo
+    document.getElementById('winner').textContent = "";
     }
 }
 
@@ -53,6 +68,9 @@ function resetGame() {
     humanScore = 0;
     computerScore = 0;
     gameActive = true;
+    document.getElementById('round-result').textContent = "";
+    document.getElementById('score').textContent = "0 - 0";
+    document.getElementById('winner').textContent = "";
     console.log("Game reset!");
 }
 
